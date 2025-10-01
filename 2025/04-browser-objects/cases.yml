@@ -1,0 +1,114 @@
+- title: "Базовые объекты браузера"
+  html: ""
+  js: |
+    const messages = [];
+    messages.push("typeof window: " + typeof window);
+    messages.push("typeof document: " + typeof document);
+    messages.push("typeof document.body: " + typeof document.body);
+    messages.push("typeof navigator: " + typeof navigator);
+
+    document.querySelector("#root").innerHTML = (
+      "<div class='messages'>" +
+      messages.join("<br>") +
+      "</div>"
+    );
+
+- title: "querySelector"
+  html: |
+    <ul>
+      <li>Первый элемент</li>
+      <li>Второй элемент</li>
+    </ul>
+  js: |
+    const li = document.querySelector("#root li");
+    li.classList.add("marked");
+
+- title: "querySelectorAll"
+  html: |
+    <ul>
+      <li>Первый элемент</li>
+      <li>Второй элемент</li>
+    </ul>
+  js: |
+    const lis = document.querySelectorAll("#root li");
+    lis.forEach((li) => li.classList.add("marked"));
+
+- title: "children"
+  html: |
+    <ul>
+      <li>Первый элемент</li>
+      <li>Второй элемент</li>
+    </ul>
+  js: |
+    const ul = document.querySelector("#root ul");
+    const lis = [...ul.children];
+    lis.forEach((li) => li.classList.add("marked"));
+
+- title: "parentElement"
+  html: |
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  js: |
+    const item = document.querySelector("#root .item");
+    const container = item.parentElement;
+    container.classList.add("marked");
+
+- title: "closest()"
+  html: |
+    <div class="container">
+      <div class="item">
+        <div class="target"></div>
+      </div>
+    </div>
+  js: |
+    const target = document.querySelector("#root .target");
+    const container = target.closest(".container");
+    container.classList.add("marked");
+
+- title: "className"
+  html: |
+    <div class="container">
+      <div class="target another-class">
+      </div>
+      <div class="messages">
+      </div>
+    </div>
+  js: |
+    const target = document.querySelector("#root .target");
+    const message = document.querySelector("#root .messages");
+    message.innerHTML = target.className;
+
+- title: "dataset"
+  html: |
+    <div class="container">
+      <div class="target" data-index="341">
+      </div>
+      <div class="messages">
+      </div>
+    </div>
+  js: |
+    const target = document.querySelector("#root .target");
+    const message = document.querySelector("#root .messages");
+    message.innerHTML = target.dataset.index;
+
+- title: "input properties"
+  html: |
+    <div class="container">
+      <div>
+        <input class="text" type="text">
+      </div>
+      <div>
+        <input class="checkbox" type="checkbox">
+      </div>
+      <div class="messages">
+      </div>
+    </div>
+  js: |
+    const text = document.querySelector("#root .text");
+    const cb = document.querySelector("#root .checkbox");
+    const message = document.querySelector("#root .messages");
+    message.innerHTML = (
+      "Text: " + text.value + "<br>" +
+      "Checked: " + cb.checked
+    );

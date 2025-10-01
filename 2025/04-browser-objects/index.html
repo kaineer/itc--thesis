@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .editors {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .editor {
+      display: flex;
+      width: 50%;
+      flex-direction: column;
+    }
+
+    textarea {
+      font-size: 1.2em;
+      min-height: 300px;
+    }
+
+    button {
+      font-size: 1.2em;
+      margin: 6px 8px 4px 0px;
+    }
+
+    #root {
+      font-size: 1.2em;
+      margin-top: 8px;
+
+      .container {
+        width: 100%;
+        background-color: #fce;
+        padding: 8px;
+      }
+
+      .item {
+        width: 100px;
+        height: 100px;
+        margin: 8px;
+        background-color: #cef;
+      }
+
+      .container.marked,
+      .item.marked {
+        background-color: #f66;
+      }
+
+      .marked {
+        color: #f66;
+      }
+
+      .messages {
+        font-size: 1.2em;
+        color: #434c5e;
+        background-color: #88c0d0;
+        outline: solid 1px #5e81ac;
+        border-radius: 8px;
+        padding: 2px 8px;
+      }
+    }
+
+    .cases {
+      font-size: 1.2em;
+      width: 100%;
+    }
+
+    input {
+      font-size: 1.2em;
+    }
+  </style>
+  <script src="./cases.js"></script>
+</head>
+
+<script>
+  function handleHTMLClick() {
+    const ta = document.querySelector("#htmlcode");
+    const root = document.querySelector("#root");
+
+    root.innerHTML = ta.value;
+  }
+
+  function handleJSClick() {
+    const ta = document.querySelector("#jscode");
+    eval(ta.value);
+  }
+</script>
+
+<body>
+  <select class="cases">
+    <option>-- Выберите вариант --</option>
+  </select>
+  <div class="editors">
+    <div class="editor">
+      <label>HTML</label>
+      <textarea id="htmlcode"></textarea>
+    </div>
+    <div class="editor">
+      <label>JS</label>
+      <textarea id="jscode"></textarea>
+    </div>
+  </div>
+  <div>
+    <button onclick="handleHTMLClick()">Set HTML</button>
+    <button onclick="handleJSClick()">Run JS</button>
+  </div>
+
+  <div id="root"></div>
+</body>
+
+<script>
+  const select = document.querySelector(".cases");
+  cases.forEach((c, i) => {
+    const option = document.createElement("option");
+    option.innerText = c.title;
+    option.value = i;
+    select.append(option);
+  });
+
+  const html = document.querySelector("#htmlcode");
+  const js = document.querySelector("#jscode");
+  const root = document.querySelector("#root");
+
+  select.addEventListener("change", (e) => {
+    e.preventDefault();
+    const t = Number(select.value);
+    const c = cases[t];
+
+    html.value = c.html;
+    js.value = c.js;
+
+    root.innerHTML = c.html;
+  });
+</script>
+
+</html>
