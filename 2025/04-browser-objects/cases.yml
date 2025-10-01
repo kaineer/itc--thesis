@@ -112,3 +112,39 @@
       "Text: " + text.value + "<br>" +
       "Checked: " + cb.checked
     );
+
+- title: "Добавление элементов"
+  html: |
+    <ul>
+      <li>Первый элемент</li>
+    </ul>
+  js: |
+    const ul = document.querySelector("#root ul");
+    const li = document.createElement("li");
+    li.textContent = "Второй элемент";
+    ul.append(li);
+
+- title: "Удаление элементов"
+  html: |
+    <ul>
+      <li>Первый элемент</li>
+      <li class="target">Второй элемент</li>
+    </ul>
+  js: |
+    const ul = document.querySelector("#root ul");
+    const target = ul.querySelector(".target");
+    target.remove();
+
+- title: "Анимация"
+  html: |
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  js: |
+    const item = document.querySelector("#root .item");
+    item.animate([
+      { transform: 'translateX(0px)' },
+      { transform: 'translateX(800px)' },
+    ], {
+      duration: 1000
+    });

@@ -44,6 +44,21 @@ const cases = (
     "title": "input properties",
     "html": "<div class=\"container\">\n  <div>\n    <input class=\"text\" type=\"text\">\n  </div>\n  <div>\n    <input class=\"checkbox\" type=\"checkbox\">\n  </div>\n  <div class=\"messages\">\n  </div>\n</div>\n",
     "js": "const text = document.querySelector(\"#root .text\");\nconst cb = document.querySelector(\"#root .checkbox\");\nconst message = document.querySelector(\"#root .messages\");\nmessage.innerHTML = (\n  \"Text: \" + text.value + \"<br>\" +\n  \"Checked: \" + cb.checked\n);\n"
+  },
+  {
+    "title": "Добавление элементов",
+    "html": "<ul>\n  <li>Первый элемент</li>\n</ul>\n",
+    "js": "const ul = document.querySelector(\"#root ul\");\nconst li = document.createElement(\"li\");\nli.textContent = \"Второй элемент\";\nul.append(li);\n"
+  },
+  {
+    "title": "Удаление элементов",
+    "html": "<ul>\n  <li>Первый элемент</li>\n  <li class=\"target\">Второй элемент</li>\n</ul>\n",
+    "js": "const ul = document.querySelector(\"#root ul\");\nconst target = ul.querySelector(\".target\");\ntarget.remove();\n"
+  },
+  {
+    "title": "Анимация",
+    "html": "<div class=\"container\">\n  <div class=\"item\"></div>\n</div>\n",
+    "js": "const item = document.querySelector(\"#root .item\");\nitem.animate([\n  { transform: 'translateX(0px)' },\n  { transform: 'translateX(800px)' },\n], {\n  duration: 1000\n});\n"
   }
 ]
 );
