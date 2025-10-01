@@ -6,15 +6,15 @@ class Creature {
   }
 }
 
-class Person extends Creature {
-  // #name
+class Person extends Creature  {
+  #name
 
   constructor(name) {
     super("human");
-    this.name = name;
+    this.#name = name;
   }
   hello() {
-    console.log("I am " + this.name);
+    console.log("I am " + this.#name);
     console.log("and I am " + this.type);
     console.log("My class is Person");
   }
@@ -23,4 +23,4 @@ class Person extends Creature {
 const john = new Person("John");
 john.hello();
 
-console.log(john.name);
+// console.log(john.#name);

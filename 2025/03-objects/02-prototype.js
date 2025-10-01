@@ -4,7 +4,9 @@ function Person (name) {
 }
 
 // Person.prototype.hello = function () {
-//   console.log(":: BEFORE Object.assign"); console.log("Hello, I am " + this.name); console.log("And I am using prototyping to access hello method");
+//   console.log(":: BEFORE Object.assign");
+//   console.log("Hello, I am " + this.name);
+//   console.log("And I am using prototyping to access hello method");
 //   console.log("");
 // }
 
@@ -19,8 +21,8 @@ Object.assign(Person.prototype, {
 
 // Так создаются объекты с прототипом
 const john = new Person("John");
-// john.__proto__.hello
 // john.hello();
+// john.__proto__.hello.bind(john)();
 
 // console.log("fn:", typeof john.hello);
 // console.log("keys:", Object.keys(john));
@@ -37,4 +39,4 @@ const obj = {
   }
 }
 
-obj.methodA();
+obj.method();

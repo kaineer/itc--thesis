@@ -19,12 +19,14 @@ const objWithMethods = {
 // objWithMethods.hello();
 
 // Контекст метода можно поменять/или просто передать объект, как контекст для функции
-// const fn = (function () {
-//   console.log("I have access to " + this.name);
-//   this.hello();
-// });
-//
+const fn = (function () {
+  console.log("I have access to " + this.name);
+  this.hello();
+});
+
+
 // fn.bind(objWithMethods)();
+// fn();
 
 // В таком объекте все видно
 console.log(Object.keys(objWithMethods));
